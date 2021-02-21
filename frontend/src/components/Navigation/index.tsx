@@ -7,24 +7,29 @@ import Header from "components/Header";
 
 import styles from "./styles";
 
-function Navigation(): JSX.Element {
-  const [drawerStatus, setDrawerStatus] = useState(false);
+interface Props {
+  drawerStatus: boolean;
+  openDrawer: () => void;
+  closeDrawer: () => void;
+}
+
+function Navigation({drawerStatus, openDrawer, closeDrawer}: Props): JSX.Element {
   const classes = styles();
 
   return (
     <>
-      <Header drawerStatus={drawerStatus} openDrawer={() => setDrawerStatus(true)} />
+      <Header drawerStatus={drawerStatus} openDrawer={openDrawer} />
       <Drawer
         className={classes.drawer}
         variant="persistent"
         anchor="left"
         open={drawerStatus}
-        onClose={() => setDrawerStatus(false)}
+        onClose={closeDrawer}
         classes={{
           paper: classes.drawerPaper,
         }}
       >
-        <NavBar drawerStatus={drawerStatus} closeDrawer={() => setDrawerStatus(false)} />
+        <NavBar drawerStatus={drawerStatus} closeDrawer={closeDrawer} />
       </Drawer>
     </>
   );

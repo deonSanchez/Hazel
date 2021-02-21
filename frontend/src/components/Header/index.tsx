@@ -15,7 +15,7 @@ function Header({ openDrawer, drawerStatus }: Props): JSX.Element {
 
   return (
     <AppBar
-      position="fixed"
+      position="relative"
       className={drawerStatus ? classes.appBarShift : classes.appBar}
     >
       <Toolbar>
