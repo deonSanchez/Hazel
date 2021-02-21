@@ -1,37 +1,33 @@
 import React, { useState } from "react";
-import {
-  AppBar,
-  Drawer,
-  Toolbar,
-  Typography,
-  IconButton,
-} from "@material-ui/core";
-import { Menu, Notifications, AccountCircle, Mail } from "@material-ui/icons";
 
-import NavBar from "components/NavBar";
+import { AppBar, Toolbar, Typography, IconButton } from "@material-ui/core";
+import { Menu, Notifications, AccountCircle, Mail } from "@material-ui/icons";
 
 import styles from "./styles";
 
-function Header(): JSX.Element {
-  const [openDrawer, setOpenDrawer] = useState(false);
+interface Props {
+  openDrawer: () => void;
+  drawerStatus: boolean;
+}
+
+function Header({ openDrawer, drawerStatus }: Props): JSX.Element {
   const classes = styles();
+
   return (
-    <AppBar>
+    <AppBar
+      position="fixed"
+      className={drawerStatus ? classes.appBarShift : classes.appBar}
+    >
       <Toolbar>
         <IconButton
+          className={drawerStatus ? classes.hide : classes.menuButton}
           color="inherit"
           edge="start"
-          onClick={() => setOpenDrawer(true)}
+          onClick={openDrawer}
         >
           <Menu />
         </IconButton>
-        <Drawer
-          anchor="left"
-          open={openDrawer}
-          onClose={() => setOpenDrawer(false)}
-        >
-          <NavBar />
-        </Drawer>
+
         <Typography color="inherit" variant="h6" noWrap>
           Hazel Website
         </Typography>

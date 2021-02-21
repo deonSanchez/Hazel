@@ -1,13 +1,12 @@
 import React from "react";
 import { Switch, Route } from "react-router-dom";
 
-import Header from "components/Header";
-
+import Navigation from "components/Navigation";
 
 function DashboardPage(): JSX.Element {
   return (
     <>
-    <Header/>
+      <Navigation />
       <div>Dashboard Page</div>
       <Switch>
         <Route></Route>
