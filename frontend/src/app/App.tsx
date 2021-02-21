@@ -1,9 +1,12 @@
+import { Switch, Route } from "react-router-dom";
 
-function App() {
+import DashboardPage from "pages/DashboardPage";
+
+function App(): JSX.Element {
   return (
-    <div >
-      Hello World 2
-    </div>
+    <Switch>
+      <Route component={DashboardPage} />
+    </Switch>
   );
 }
 
